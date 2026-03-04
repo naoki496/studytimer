@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>学習時間トラッカー - ログ</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="brand">
+        <h1>学習時間トラッカー</h1>
+        <div class="sub">日別ログ</div>
+      </div>
+      <div class="nav">
+        <a href="./index.html">今日</a>
+        <a class="active" href="./log.html">ログ</a>
+        <a href="./month.html">月次</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="card">
+      <h2>日付</h2>
+      <div class="row">
+        <input class="input" type="date" id="inpDate" />
+        <button class="btn" id="btnToday" type="button">今日</button>
+        <button class="btn" id="btnPrev" type="button">前日</button>
+        <button class="btn" id="btnNext" type="button">翌日</button>
+      </div>
+      <div class="muted" style="margin-top:6px">※ 編集は一覧の「編集」で行います。</div>
+    </section>
+
+    <div class="grid" style="margin-top:12px">
+      <section class="card">
+        <h2>自動計測セッション</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>教科</th>
+              <th>開始</th>
+              <th>終了</th>
+              <th>時間</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbodySessions"></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>手動入力（塾など）</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>カテゴリ</th>
+              <th>教科</th>
+              <th>分</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyManual"></tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script type="module" src="./js/ui-log.js"></script>
+</body>
+</html>
