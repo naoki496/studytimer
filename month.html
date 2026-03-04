@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>学習時間トラッカー - 月次</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="brand">
+        <h1>学習時間トラッカー</h1>
+        <div class="sub">月次集計</div>
+      </div>
+      <div class="nav">
+        <a href="./index.html">今日</a>
+        <a href="./log.html">ログ</a>
+        <a class="active" href="./month.html">月次</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="card">
+      <h2>対象月</h2>
+      <div class="row">
+        <input class="input" type="month" id="inpMonth" />
+        <button class="btn" id="btnThisMonth" type="button">今月</button>
+        <button class="btn" id="btnPrevMonth" type="button">前月</button>
+        <button class="btn" id="btnNextMonth" type="button">翌月</button>
+      </div>
+    </section>
+
+    <div class="grid" style="margin-top:12px">
+      <section class="card">
+        <h2>合計</h2>
+        <div class="row">
+          <span class="badge">総計：<strong id="mTotal">0時間0分</strong></span>
+          <span class="badge">自動：<strong id="mAuto">0時間0分</strong></span>
+          <span class="badge">手動：<strong id="mManual">0時間0分</strong></span>
+        </div>
+        <div class="hr"></div>
+        <div class="muted">教科別</div>
+        <table class="table">
+          <thead><tr><th>教科</th><th>合計</th></tr></thead>
+          <tbody id="tbodyMonthBySub"></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>メモ</h2>
+        <div class="muted">
+          ・端末内（IndexedDB）保存です。<br/>
+          ・月次は「自動＋手動」を合算します。<br/>
+          ・次段階でCSV出力・目標時間・グラフ追加が可能です。
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script type="module" src="./js/ui-month.js"></script>
+</body>
+</html>
