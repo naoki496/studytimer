@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>学習時間トラッカー - 今日</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="brand">
+        <h1>学習時間トラッカー</h1>
+        <div class="sub">今日の計測</div>
+      </div>
+      <div class="nav">
+        <a class="active" href="./index.html">今日</a>
+        <a href="./log.html">ログ</a>
+        <a href="./month.html">月次</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      <section class="card" aria-label="タイマー">
+        <h2>タイマー</h2>
+        <div class="row">
+          <span class="badge"><span class="dot" id="runDot"></span><span id="runLabel">停止中</span></span>
+          <span class="badge" id="todayKey">----</span>
+        </div>
+
+        <div class="bigTime" id="timeNow">00:00:00</div>
+        <div class="muted" id="timeHint">教科を選んで開始してください。</div>
+
+        <div class="hr"></div>
+
+        <div class="row">
+          <select class="select" id="selSubject" aria-label="教科選択"></select>
+          <button class="btn btnPrimary" id="btnStart" type="button">開始</button>
+          <button class="btn" id="btnPause" type="button" disabled>一時停止</button>
+          <button class="btn btnDanger" id="btnStop" type="button" disabled>終了</button>
+        </div>
+
+        <div class="hr"></div>
+
+        <h2>手動追加（塾など）</h2>
+        <div class="row">
+          <select class="select" id="selManualCategory" aria-label="カテゴリ"></select>
+          <select class="select" id="selManualSubject" aria-label="教科"></select>
+          <input class="input" id="inpMinutes" type="number" min="1" step="1" placeholder="分" style="width:110px" />
+          <button class="btn btnOk" id="btnAddManual" type="button">追加</button>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <input class="input" id="inpManualNote" type="text" placeholder="メモ（任意）" style="flex:1 1 360px; min-width:220px"/>
+        </div>
+        <div class="muted" style="margin-top:6px">※ 手動入力は「分」で管理します。</div>
+      </section>
+
+      <section class="card" aria-label="今日の集計">
+        <h2>今日の合計</h2>
+        <div class="row">
+          <span class="badge">総計：<strong id="todayTotal">0分</strong></span>
+          <span class="badge">自動：<strong id="todayAuto">0分</strong></span>
+          <span class="badge">手動：<strong id="todayManual">0分</strong></span>
+        </div>
+        <div class="hr"></div>
+        <div class="muted">教科別</div>
+        <table class="table" aria-label="教科別合計">
+          <thead>
+            <tr><th>教科</th><th>合計</th></tr>
+          </thead>
+          <tbody id="tbodyBySubject">
+            <tr><td colspan="2" class="muted">データなし</td></tr>
+          </tbody>
+        </table>
+
+        <div class="hr"></div>
+        <div class="row">
+          <a href="./log.html" class="btn" style="display:inline-block">日別ログへ</a>
+          <a href="./month.html" class="btn" style="display:inline-block">月次へ</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="module" src="./js/ui-today.js"></script>
+</body>
+</html>
